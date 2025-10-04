@@ -1,35 +1,3 @@
-const BASE = 10; // base bet per number
-const PROG = [1, 1, 2, 3]; // multipliers per step
-
-function buildProgression(sliceName){
-  const tbody = document.getElementById("progTable");
-  tbody.innerHTML = "";
-  PROG.forEach((mult, i) => {
-    const perNumber = BASE * mult;
-    const total = perNumber * 6;
-    const net = 30 * perNumber;
-    const row = `<tr>
-      <td>${i+1}</td>
-      <td>$${total}</td>
-      <td>+$${net}</td>
-    </tr>`;
-    tbody.innerHTML += row;
-  });
-  document.getElementById("progTitle").textContent = `Progression – Slice ${sliceName}`;
-}
-
-function showProgression(slice){
-  document.querySelector("main").style.display = "none";
-  document.getElementById("progressionPage").style.display = "block";
-  buildProgression(slice);
-}
-
-document.getElementById("backBtn").addEventListener("click", ()=>{
-  document.querySelector("main").style.display = "block";
-  document.getElementById("progressionPage").style.display = "none";
-});
-
-
 const slices = {
   A: [2, 14, 35, 23, 4, 16],
   B: [28, 9, 26, 30, 11, 7],
@@ -57,9 +25,6 @@ function sliceOf(num) {
 for (const [key, arr] of Object.entries(slices)){
   document.getElementById('nums'+key).textContent = arr.join(', ');
 }
-const card = document.querySelector(`.slice-card[data-slice="${key}"]`);
-card.addEventListener("click", ()=> showProgression(key));
-
 
 const grid = document.querySelector('.grid');
 for (let i=1;i<=36;i++){
