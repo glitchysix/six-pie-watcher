@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Six-Pie Watcher</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <meta name="theme-color" content="#111111"/>
+  <link rel="icon" href="./icon-192.png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <script>
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      navigator.serviceWorker.register('./service-worker.js');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Six-Pie Watcher</h1>
+    <div class="toggles">
+      <label class="toggle">
+        <input id="resetOnZero" type="checkbox" />
+        <span>Reset on 0/00</span>
+      </label>
+      <button id="resetAll" class="ghost">Reset All</button>
+      <div id="entryBadge" class="badge">Entry step: —</div>
+    </div>
+  </header>
+
+  <main id="homePage">
+    <section class="slices">
+      <div class="slice-card" data-slice="A">
+        <h2>Slice A</h2>
+        <div class="numbers" id="numsA"></div>
+        <div class="readouts"><div>Misses: <span id="missA">0</span></div><div>Bid: <span id="bidA">—</span></div></div>
+      </div>
+      <div class="slice-card" data-slice="B">
+        <h2>Slice B</h2>
+        <div class="numbers" id="numsB"></div>
+        <div class="readouts"><div>Misses: <span id="missB">0</span></div><div>Bid: <span id="bidB">—</span></div></div>
+      </div>
+      <div class="slice-card" data-slice="C">
+        <h2>Slice C</h2>
+        <div class="numbers" id="numsC"></div>
+        <div class="readouts"><div>Misses: <span id="missC">0</span></div><div>Bid: <span id="bidC">—</span></div></div>
+      </div>
+      <div class="slice-card" data-slice="D">
+        <h2>Slice D</h2>
+        <div class="numbers" id="numsD"></div>
+        <div class="readouts"><div>Misses: <span id="missD">0</span></div><div>Bid: <span id="bidD">—</span></div></div>
+      </div>
+      <div class="slice-card" data-slice="E">
+        <h2>Slice E</h2>
+        <div class="numbers" id="numsE"></div>
+        <div class="readouts"><div>Misses: <span id="missE">0</span></div><div>Bid: <span id="bidE">—</span></div></div>
+      </div>
+      <div class="slice-card" data-slice="F">
+        <h2>Slice F</h2>
+        <div class="numbers" id="numsF"></div>
+        <div class="readouts"><div>Misses: <span id="missF">0</span></div><div>Bid: <span id="bidF">—</span></div></div>
+      </div>
+    </section>
+
+    <section class="pad">
+      <div class="pad-row">
+        <button class="num zero" data-num="0">0</button>
+        <button class="num zero" data-num="00">00</button>
+      </div>
+      <div class="grid"></div>
+    </section>
+  </main>
+
+  <section id="progressionPage" style="display:none; padding:16px;">
+    <h2 id="progTitle">Entry Run Progression</h2>
+
+    <div class="row">
+      <label>Base per-number $ (multiplier): <input id="baseInput" type="number" min="1" value="10"></label>
+      <label>Bankroll $: <input id="bankInput" type="number" min="0" value="300"></label>
+    </div>
+    <div id="sliceNumbers" class="sliceNums"></div>
+    <div id="avgNet" class="avgNet"></div>
+
+    <table class="prog-table" style="margin-top:12px;">
+      <thead><tr>
+        <th>Step</th><th>Entry</th><th>Mult</th><th>Total Units</th><th>Total $</th><th>Net Win $</th>
+      </tr></thead>
+      <tbody id="progTable"></tbody>
+    </table>
+
+    <div class="row" style="margin-top:10px;">
+      <button id="hitBtn" class="ghost">Hit</button>
+      <button id="missBtn" class="ghost">Miss</button>
+      <button id="backBtn" class="ghost">Return</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="legend">
+      <span class="dot cool"></span> 0-9 &nbsp;&nbsp;
+      <span class="dot warm"></span> 10-17 &nbsp;&nbsp;
+      <span class="dot hot"></span> 18-23 &nbsp;&nbsp;
+      <span class="dot iron"></span> 24+
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
