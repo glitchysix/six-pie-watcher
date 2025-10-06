@@ -1,9 +1,0 @@
-{
-  "name": "Six-Pie Watcher",
-  "short_name": "SixPie",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#0b0b0b",
-  "theme_color": "#111111",
-  "icons": []
-}
